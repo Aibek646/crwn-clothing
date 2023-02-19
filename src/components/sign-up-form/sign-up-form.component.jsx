@@ -4,7 +4,7 @@ import {
 } from "../../routes/utils/firebase/firesbase.utils";
 
 import "./sign-up-form.styles.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
@@ -35,6 +35,7 @@ const SignUpForm = () => {
                 email,
                 password
             );
+
             await createUserDocumentFromAuth(user, { displayName });
             resetFormFields();
         } catch (error) {
