@@ -1,7 +1,7 @@
 import {
     createAuthUserWithEmailAndPassword,
     createUserDocumentFromAuth
-} from "../../routes/utils/firebase/firesbase.utils";
+} from "../../utils/firebase/firesbase.utils";
 
 import "./sign-up-form.styles.scss";
 import { useState, useContext } from "react";

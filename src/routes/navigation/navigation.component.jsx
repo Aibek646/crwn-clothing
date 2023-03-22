@@ -7,7 +7,7 @@ import CartIcon from "../../components/cart-icon/cart-icon.component";
 import { CartContext } from "../../context/cart.context";
 
 import { UserContext } from "../../context/user.context";
-import { signOutUser } from "../utils/firebase/firesbase.utils";
+import { signOutUser } from "../../utils/firebase/firesbase.utils";
 import {
     NavigationContainer,
     NavLink,

@@ -2,7 +2,7 @@ import {
     createUserDocumentFromAuth,
     signInAuthUserWithEmailAndPassword,
     signInWithGooglePopup
-} from "../../routes/utils/firebase/firesbase.utils";
+} from "../../utils/firebase/firesbase.utils";
 
 import "./sign-in-form.styles.scss";
 import { useState, useContext } from "react";

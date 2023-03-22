@@ -7,7 +7,7 @@ import Checkout from "./routes/checkout/checkout.component";
 import {
     createUserDocumentFromAuth,
     onAuthStateChangedListener
-} from "./routes/utils/firebase/firesbase.utils";
+} from "./utils/firebase/firesbase.utils";
 import { useEffect } from "react";
 import { setCurrentUser } from "./store/user/user.action";
 import { useDispatch } from "react-redux";
