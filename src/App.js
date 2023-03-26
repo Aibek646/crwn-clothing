@@ -6,6 +6,7 @@ import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
 import {
     createUserDocumentFromAuth,
+    getCurrentUser,
     onAuthStateChangedListener
 } from "./utils/firebase/firesbase.utils";
 import { useEffect } from "react";
@@ -15,13 +16,7 @@ import { useDispatch } from "react-redux";
 function App() {
     const dispatch = useDispatch();
     useEffect(() => {
-        const unsubscribe = onAuthStateChangedListener((user) => {
-            if (user) {
-                createUserDocumentFromAuth(user);
-            }
-            dispatch(setCurrentUser(user));
-        });
-        return unsubscribe;
+        getCurrentUser().then((user) => console.log(user));
     }, []);
 
     return (

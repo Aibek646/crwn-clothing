@@ -65,7 +65,7 @@ export const addCollectionDocuments = async (collectionKey, objectsToAdd) => {
 export const getCategoriesAndDocuments = async () => {
     const collectionRef = collection(db, "categories");
     const q = query(collectionRef);
-    await Promise.reject(new Error("new error woops"));
+    // await Promise.reject(new Error("new error woops"));
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
@@ -114,3 +114,16 @@ export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) =>
     onAuthStateChanged(auth, callback);
+
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = onAuthStateChanged(
+            auth,
+            (userAuth) => {
+                unsubscribe();
+                resolve(userAuth);
+            },
+            reject
+        );
+    });
+};
