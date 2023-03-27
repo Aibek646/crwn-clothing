@@ -1,13 +1,14 @@
-import {
-    createUserDocumentFromAuth,
-    signInAuthUserWithEmailAndPassword,
-    signInWithGooglePopup
-} from "../../utils/firebase/firesbase.utils";
+import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firesbase.utils";
 
 import "./sign-in-form.styles.scss";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
+import { useDispatch } from "react-redux";
+import {
+    googleSignInStart,
+    emailSignInStart
+} from "../../store/user/user.action";
 
 const defaultFormFields = {
     email: "",
@@ -17,24 +18,21 @@ const defaultFormFields = {
 const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
+    const dispatch = useDispatch();
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     };
 
     const signInWithGoogle = async () => {
-        await signInWithGooglePopup();
+        dispatch(googleSignInStart());
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const { user } = await signInAuthUserWithEmailAndPassword(
-                email,
-                password
-            );
-
+            dispatch(emailSignInStart(email, password));
             resetFormFields();
         } catch (error) {
             switch (error.code) {

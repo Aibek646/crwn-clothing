@@ -10,13 +10,14 @@ import {
     onAuthStateChangedListener
 } from "./utils/firebase/firesbase.utils";
 import { useEffect } from "react";
-import { setCurrentUser } from "./store/user/user.action";
+
 import { useDispatch } from "react-redux";
+import { checkUserSession } from "./store/user/user.action";
 
 function App() {
     const dispatch = useDispatch();
     useEffect(() => {
-        getCurrentUser().then((user) => console.log(user));
+        dispatch(checkUserSession());
     }, []);
 
     return (
