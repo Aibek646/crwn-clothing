@@ -1,7 +1,5 @@
-import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firesbase.utils";
-
 import "./sign-in-form.styles.scss";
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import { useDispatch } from "react-redux";
@@ -28,7 +26,7 @@ const SignInForm = () => {
         dispatch(googleSignInStart());
     };
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         try {
@@ -51,7 +49,7 @@ const SignInForm = () => {
         }
     };
 
-    const handleChange = (e) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormFields({ ...formFields, [name]: value });
     };
